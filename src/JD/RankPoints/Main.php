@@ -112,7 +112,7 @@ class Main extends PluginBase {
 
         if (!isset($pointstogive)) {
             if (!isset($name)) {
-                $sender->sendMessage("§aType §brankpoints playersname §6to show Vote Points for a player");
+                $sender->sendMessage("§aType §bvotepoints playersname §6to show Vote Points for a player");
                 return true;
             }
 
