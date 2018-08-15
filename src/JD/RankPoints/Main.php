@@ -71,9 +71,10 @@ class Main extends PluginBase {
         }
 
         if (isset($name) && strtolower($name) === "help") {
-            $sender->sendMessage("Rank up by voting on these sites:");
-            $sender->sendMessage("minecraftlist.org");
-            $sender->sendMessage("minecraftpocket-servers.com");
+            $sender->sendMessage("§aRank up by voting on these sites:");
+            $sender->sendMessage("§bhttp://vmpevote.ml");
+            $sender->sendMessage("§bhttp://vmpevote2.ml");
+            $sebnder->sendMessage("§bhttp://vmpevote3.ml");
             return true;
         }
 
@@ -88,17 +89,17 @@ class Main extends PluginBase {
                 $data = $config->getAll();
 
                 if (!isset($data["votes"])) {
-                    $sender->sendMessage("That player never voted");
+                    $sender->sendMessage("§cOpps, that player never voted");
                     return true;
                 }
                 $votecount = $data["votes"];
-                $sender->sendMessage($name . " has a total of " . $votecount . " Rank Points");
+                $sender->sendMessage($name . " §dhas a total of §5" . $votecount . " §dVote Points");
             } else {//Get your own rank points
                 $name = trim(strtolower($sender->getName()));
                 $config = new Config($this->getDataFolder() . "players/" . $name . ".yml", Config::YAML);
                 $data = $config->getAll();
                 $votecount = $data["votes"];
-                $sender->sendMessage("You have a total of " . $votecount . " Rank Points");
+                $sender->sendMessage("§dYou have a total of §5" . $votecount . " §dVote Points");
                 $num = 0;
                 foreach ($this->ranksConfig["Ranks"] as $i) {
                     $sender->sendMessage(TextFormat::GREEN . $i . " : " . $this->ranksConfig["Points"][$num]);
@@ -111,12 +112,12 @@ class Main extends PluginBase {
 
         if (!isset($pointstogive)) {
             if (!isset($name)) {
-                $sender->sendMessage("Type rankpoints playersname to show Rank Points for a player");
+                $sender->sendMessage("§aType §brankpoints playersname §6to show Vote Points for a player");
                 return true;
             }
 
             if (!$this->playerRegistered($name)) {
-                $sender->sendMessage("That player has no Rank Points");
+                $sender->sendMessage("§cThat player has no Vote Points");
                 return true;
             }
 
@@ -125,7 +126,7 @@ class Main extends PluginBase {
             $data = $config->getAll();
 
             $votecount = $data["votes"];
-            $sender->sendMessage($name . " has a total of " . $votecount . " Rank Points");
+            $sender->sendMessage($name . " §dhas a total of §5" . $votecount . " §dVote Points");
             return true;
         } elseif (!isset($name)){
             return false;
@@ -138,7 +139,7 @@ class Main extends PluginBase {
         $p = $this->getServer()->getPlayer($name);
 
         if (!isset($p)) {
-            $this->getLogger()->info("Player $name is not online");
+            $this->getLogger()->info("§cPlayer §2$name §cis not online");
             return true;
         }
 
@@ -172,7 +173,7 @@ class Main extends PluginBase {
                 if ($currentRankIndex < $configRankIndex) {
                     $newgroup = $this->purePerms->getGroup($i);
                     $this->purePerms->getUserDataMgr()->setGroup($p, $newgroup, null);
-                    $p->sendMessage("Thanks for voting - you are now " . $i . ". Keep voting to rank up!");
+                    $p->sendMessage("§dThanks for voting - you are now §5" . $i . ". §dKeep voting to rank up!");
                 }
             }
             $num ++;
