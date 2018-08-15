@@ -1,12 +1,13 @@
-name: RankPoints
+name: VotePoints
 main: JD\RankPoints\Main
 version: 1.5.3
 api: [3.0.0]
-author: JD
+author: ServerMaker
 load: POSTWORLD
 commands:
-  rankpoints:
-    description: "Shows/Gives Rank Points"
-    usage: "/rankpoints {player points}"
+  votepoints:
+    description: "Shows/Gives vote Points"
+    aliases: [vp]
+    usage: "/votepoints {player points}"
     
     
