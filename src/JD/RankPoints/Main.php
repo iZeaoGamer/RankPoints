@@ -71,10 +71,8 @@ class Main extends PluginBase {
         }
 
         if (isset($name) && strtolower($name) === "help") {
-            $sender->sendMessage("§aRank up by voting on these sites:");
-            $sender->sendMessage("§bhttp://vmpevote.ml");
-            $sender->sendMessage("§bhttp://vmpevote2.ml");
-            $sebnder->sendMessage("§bhttp://vmpevote3.ml");
+            $sender->sendMessage(TextFormat::colorize("&aRank up by voting on these sites:"));
+            $sender->sendMessage(TextFormat::colorize("§bhttp://zpevote.ml"));
             return true;
         }
 
